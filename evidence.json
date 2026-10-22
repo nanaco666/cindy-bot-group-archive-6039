@@ -1,0 +1,40 @@
+{
+  "sourceHead": "9f73cc1f914e4681ac7b7e1c0bf327b0e622cfdd",
+  "branch": "fix-plugin-settings-document-prompts",
+  "metroPort": 8081,
+  "base": "5190fead4014079cbbd873b4676d057ceeade8d6",
+  "fixture": true,
+  "scenario": "A -> B -> A -> B; Host document command precedes fetch; epoch increases",
+  "boundary": "Native WebView and fixture transport; actual Host prompt isolation covered by production-entry unit tests; no real account/OAuth acceptance",
+  "ios": {
+    "version": "26.5",
+    "nativeFingerprint": "8a74ce927b0e3736e2811e8f17c04b5a6c9f822d"
+  },
+  "android": {
+    "version": "14 arm64",
+    "nativeFingerprint": "1d4c3b69df3ed284c34969429629e5bb9589792c",
+    "fingerprintWorkflow": "managed"
+  },
+  "androidColdStart": {
+    "status": "failed-unresolved",
+    "symptom": "ERR_HTTP_RESPONSE_CODE_FAILURE; CDP observed no settings authentication cookie; warm entry passed",
+    "scope": "Existing peer-file transport incognito clears Android process cookies; no independent baseline runtime reproduction yet"
+  },
+  "tests": {
+    "deviceLink": 1014,
+    "host": 61,
+    "mobile": 148,
+    "types": [
+      "desktop",
+      "mobile"
+    ],
+    "rootUnit": "runner 585 passed, 1 failed, 2 skipped; baseline reproduces Git fixture nothing-to-commit; workspace stage not started"
+  },
+  "files": [
+    "android-cold-start-failure.png",
+    "ios-document-b-dark.png",
+    "android-document-b-light.png",
+    "ios-build-label.png",
+    "android-build-label.png"
+  ]
+}

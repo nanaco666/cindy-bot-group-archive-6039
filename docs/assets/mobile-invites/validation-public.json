@@ -1,0 +1,76 @@
+{
+  "head": "43579ceb017be8c47048f0835c11fafdc32292f7",
+  "branch": "feat-mobile-group-invites",
+  "base": "727afb1ad6902176e2ec55254154b900c489a998",
+  "scope": {
+    "files": 36,
+    "nativeInputsChanged": false,
+    "independentScopeReview": true
+  },
+  "automated": {
+    "targeted": {
+      "files": 12,
+      "passed": 248
+    },
+    "typecheck": {
+      "mobile": "passed",
+      "desktop": "passed"
+    },
+    "fullUnitGate": {
+      "rootRunnerPassed": 612,
+      "workspacesPassed": 30,
+      "firstRun": "Desktop worker SIGSEGV; Mobile two icon-token violations; maker-core inherited test-host environment assertion",
+      "repair": "Mobile uses equal-value icon tokens. Original three failed workspace selections rerun through official runPlannedTests; Desktop forks / maxWorkers=2; test-only child environment excludes CINDY_INPUT_HANDOFF_ROUTE. Assertions and exclusions unchanged.",
+      "desktop": {
+        "filesPassed": 3773,
+        "testsPassed": 63894
+      },
+      "mobile": {
+        "filesPassed": 744,
+        "testsPassed": 10732
+      },
+      "makerCore": {
+        "filesPassed": 185,
+        "testsPassed": 5985
+      },
+      "result": "passed after repairs"
+    },
+    "guards": [
+      "test-hygiene",
+      "i18n-glossary",
+      "dev-docs",
+      "design-inventory",
+      "diff-check",
+      "DCO"
+    ]
+  },
+  "runtime": {
+    "platform": "iOS 26.5 / iPhone 17 Pro simulator",
+    "region": "dev",
+    "sourceBuildLabel": "feat-mobile-group-invites@43579ceb0 · v0.1.0 (2026072301)",
+    "nativeFingerprint": "574cfd3a9e369a2652988e1a82be132e8472e943",
+    "nativePackage": "rebuilt arm64; whole bundle verified",
+    "manualPreview": "real avatar collection and 2 members before joining",
+    "sameLinkDuringManualPreview": "no false other-invitation notice; manual mode retained",
+    "cancelForeground": "does not reopen",
+    "accept": "2 to 3 members; receiver membership count 1; join notices count 1",
+    "reopen": "already joined; Open Group and return Home passed",
+    "coldStartClipboard": "known QA clipboard allowed; real group, 3 members, already joined; Cancel returns Home",
+    "themes": [
+      "light visually checked",
+      "dark visually checked"
+    ]
+  },
+  "unverified": [
+    "Android native UI",
+    "physical device",
+    "production end-to-end",
+    "WeChat browser handoff",
+    "post-install invitation continuation"
+  ],
+  "publication": {
+    "canonicalIssue": "missing; final maintainer handoff remains pending",
+    "CI": "pending at PR creation",
+    "score": "pending at PR creation"
+  }
+}

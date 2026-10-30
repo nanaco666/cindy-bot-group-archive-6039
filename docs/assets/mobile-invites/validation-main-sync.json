@@ -1,11 +1,15 @@
 {
   "version": 1,
-  "sourceHead": "9623d2a7a5369f8665c4e782b8bd4e84341813a5",
+  "sourceHead": "b6b10eac35b5588a9b8ad9234d6899f2c86c5860",
   "mergedMain": "1dbff37a891f3d4c660f326084876e09598d80bf",
   "scope": {
     "fileCount": 36,
-    "invitationPatchIdenticalTo": "69af80da8492774d4facb1fac4874210f9582613",
-    "manualConflict": "HomeTeammatesSection.test.tsx; preserve invitation rows and upstream avatar default"
+    "baseSync": "9623d2a7a5369f8665c4e782b8bd4e84341813a5; invitation patch identical to 69af80da before this repair",
+    "repairFiles": [
+      "useChatInvite.ts",
+      "useChatInvite.test.tsx"
+    ],
+    "repair": "manual app-scheme links use the existing canonical parser; bare codes and editing retained"
   },
   "native": {
     "fingerprint": "574cfd3a9e369a2652988e1a82be132e8472e943",
@@ -13,17 +17,22 @@
     "reusedInstalledApp": true
   },
   "automated": {
-    "mobileTests": 209,
+    "mobileTests": 212,
+    "mobileSeconds": 8.19,
+    "mobileTypecheckSeconds": 25.36,
     "desktopTests": 50,
-    "totalFiles": 12,
-    "mobileTypecheckSeconds": 26.7,
     "desktopTypecheckSeconds": 165.43,
-    "guardsPassed": true,
+    "desktopResultsReusedFrom": "9623d2a7a5; desktop code and inputs unchanged",
+    "regressionBeforeFix": {
+      "passed": 22,
+      "failed": 2
+    },
+    "regressionAfterFix": "both app schemes and truncated-link negative case pass within 212 Mobile tests",
     "localFullSuiteRerun": false
   },
   "runtime": {
     "platform": "iOS 26.5 / iPhone 17 Pro",
-    "sourceLabel": "feat-mobile-group-invites@9623d2a7a",
+    "sourceLabel": "feat-mobile-group-invites@b6b10eac3",
     "realDevPreview": true,
     "group": "Invite QA 1029",
     "memberCount": 3,
@@ -37,7 +46,14 @@
     },
     "cancelClosed": true,
     "returnedHome": true,
-    "temporaryInviterCaption": "QA User; memory only, restored after screenshots"
+    "temporaryInviterCaption": "QA User; memory only, restored after screenshots",
+    "manualSchemesVerified": [
+      "cindydev",
+      "cindycn"
+    ],
+    "manualEditLinkRetained": true,
+    "manualProof": "pre-commit runtime used the identical source hashes recorded for the commit; final head reloaded and preview/themes checked",
+    "testPastePermission": "allowed only in the QA simulator"
   },
   "historicalEvidence": {
     "firstJoin": "43579ceb: 2 to 3 members; unique member and join event",
@@ -53,8 +69,10 @@
   ],
   "review": {
     "provider": "greptile",
-    "requestUrl": "https://github.com/makecindy/cindy/pull/7930#issuecomment-6514050747",
+    "requestUrl": "https://github.com/makecindy/cindy/pull/7930#issuecomment-6514264102",
     "currentHeadScoreVerified": false,
-    "oldHeadScoreNotReused": true
+    "oldHeadScoreNotReused": true,
+    "fixedThread": "https://github.com/makecindy/cindy/pull/7930#discussion_r4420121381",
+    "threadResolved": true
   }
 }

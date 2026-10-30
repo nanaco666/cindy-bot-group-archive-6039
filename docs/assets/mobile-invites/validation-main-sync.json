@@ -1,0 +1,51 @@
+{
+  "repository": "makecindy/cindy",
+  "pr": 7930,
+  "head": "51eca5b0448d0d03ca3c1897035d1861cd88b38f",
+  "mainMerged": "a1532bf1c155baf6a1b1bf770f6ed6599b0d364b",
+  "conflictsResolved": [
+    "HomeTeammatesSection.tsx",
+    "HomeTeammatesSection.test.tsx",
+    "design-inventory.md"
+  ],
+  "scope": "36 invitation files relative to main; upstream changes retained",
+  "automated": {
+    "targetedFiles": 12,
+    "targetedCases": 256,
+    "mobileCases": 206,
+    "desktopCases": 50,
+    "homeStandalone": {
+      "cases": 17,
+      "seconds": 3.05
+    },
+    "mobileTypecheck": "passed / 32.88s",
+    "desktopTypecheck": "passed / 177.28s",
+    "guards": "test-hygiene, glossary, dev-docs, design-inventory, diff-check and DCO passed",
+    "independentReview": "no confirmed P0/P1; final 36 source hashes verified",
+    "fullUnit": "not repeated for this main sync; initial 43579ceb full aggregate retained as historical evidence; current-head CI required"
+  },
+  "runtime": {
+    "platform": "iOS 26.5 / iPhone 17 Pro simulator",
+    "region": "dev",
+    "sourceLabel": "feat-mobile-group-invites@51eca5b04 · v0.1.0 (2026072301)",
+    "nativeFingerprint": "574cfd3a9e369a2652988e1a82be132e8472e943",
+    "port": 8084,
+    "identity": "healthy / native-matched / target-fresh",
+    "passed": [
+      "collapsed header retains Join Group without an online computer",
+      "manual real preview: avatar collection, 3 members, already joined",
+      "same external link retains manual edit without false warning",
+      "Open Group navigates to exact QA group; Back returns Home",
+      "prior expanded preference restored",
+      "Light and Dark complete screenshots checked"
+    ]
+  },
+  "screenshotPrivacy": "Only inviter display caption temporarily replaced with QA User in simulator memory; restored. No source/account edits or post-capture image edits.",
+  "unverified": [
+    "Android native UI",
+    "physical device",
+    "production end-to-end",
+    "fresh first join on this merged head (covered unchanged in initial 43579ceb Dev acceptance)"
+  ],
+  "remote": "new head CI and review pending publication"
+}

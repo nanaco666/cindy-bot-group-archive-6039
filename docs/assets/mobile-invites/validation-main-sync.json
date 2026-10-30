@@ -1,51 +1,34 @@
 {
-  "repository": "makecindy/cindy",
-  "pr": 7930,
-  "head": "51eca5b0448d0d03ca3c1897035d1861cd88b38f",
-  "mainMerged": "a1532bf1c155baf6a1b1bf770f6ed6599b0d364b",
-  "conflictsResolved": [
-    "HomeTeammatesSection.tsx",
-    "HomeTeammatesSection.test.tsx",
-    "design-inventory.md"
-  ],
-  "scope": "36 invitation files relative to main; upstream changes retained",
-  "automated": {
-    "targetedFiles": 12,
-    "targetedCases": 256,
-    "mobileCases": 206,
-    "desktopCases": 50,
-    "homeStandalone": {
-      "cases": 17,
-      "seconds": 3.05
-    },
-    "mobileTypecheck": "passed / 32.88s",
-    "desktopTypecheck": "passed / 177.28s",
-    "guards": "test-hygiene, glossary, dev-docs, design-inventory, diff-check and DCO passed",
-    "independentReview": "no confirmed P0/P1; final 36 source hashes verified",
-    "fullUnit": "not repeated for this main sync; initial 43579ceb full aggregate retained as historical evidence; current-head CI required"
-  },
+  "head": "69af80da8492774d4facb1fac4874210f9582613",
+  "mainMerged": "694d5b5a93a5ca71df203d92c517a21d89bbd11a",
+  "latestMainMergePreview": "3eb1ab673e23751eab011c40560c1b211e3cc949 / clean",
+  "targetedFiles": 12,
+  "targetedTests": 259,
+  "mobileTests": 209,
+  "desktopTests": 50,
+  "mobileTypecheck": "passed / 26.35s",
+  "desktopTypecheck": "passed / 149.66s",
+  "guards": "passed",
+  "productionInvitationPatch": "identical to reviewed 51eca5b044 patch relative to respective main bases",
+  "localeMerge": "five invitation objects identical to previous feature; all other values identical to new main",
   "runtime": {
-    "platform": "iOS 26.5 / iPhone 17 Pro simulator",
+    "platform": "iOS26.5 QA simulator",
     "region": "dev",
-    "sourceLabel": "feat-mobile-group-invites@51eca5b04 · v0.1.0 (2026072301)",
-    "nativeFingerprint": "574cfd3a9e369a2652988e1a82be132e8472e943",
-    "port": 8084,
-    "identity": "healthy / native-matched / target-fresh",
-    "passed": [
-      "collapsed header retains Join Group without an online computer",
-      "manual real preview: avatar collection, 3 members, already joined",
-      "same external link retains manual edit without false warning",
-      "Open Group navigates to exact QA group; Back returns Home",
-      "prior expanded preference restored",
-      "Light and Dark complete screenshots checked"
-    ]
+    "sourceLabel": "feat-mobile-group-invites@69af80da8 · v0.1.0 (2026072301)",
+    "identity": "healthy, native-matched, 8084 target-fresh",
+    "preview": "real QA avatar collection / 3 members / already joined",
+    "themes": [
+      "Light",
+      "Dark"
+    ],
+    "privacy": "inviter display caption changed in memory only for screenshot; restored"
   },
-  "screenshotPrivacy": "Only inviter display caption temporarily replaced with QA User in simulator memory; restored. No source/account edits or post-capture image edits.",
+  "historicalEvidence": "51eca5b044 Home/navigation and 43579ceb first join/full local gate retained separately; not current-head full CI",
   "unverified": [
+    "current-head fresh first join",
     "Android native UI",
     "physical device",
-    "production end-to-end",
-    "fresh first join on this merged head (covered unchanged in initial 43579ceb Dev acceptance)"
+    "production"
   ],
-  "remote": "new head CI and review pending publication"
+  "remoteCIAndReview": "pending at capture"
 }

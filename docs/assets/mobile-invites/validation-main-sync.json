@@ -1,34 +1,60 @@
 {
-  "head": "69af80da8492774d4facb1fac4874210f9582613",
-  "mainMerged": "694d5b5a93a5ca71df203d92c517a21d89bbd11a",
-  "latestMainMergePreview": "3eb1ab673e23751eab011c40560c1b211e3cc949 / clean",
-  "targetedFiles": 12,
-  "targetedTests": 259,
-  "mobileTests": 209,
-  "desktopTests": 50,
-  "mobileTypecheck": "passed / 26.35s",
-  "desktopTypecheck": "passed / 149.66s",
-  "guards": "passed",
-  "productionInvitationPatch": "identical to reviewed 51eca5b044 patch relative to respective main bases",
-  "localeMerge": "five invitation objects identical to previous feature; all other values identical to new main",
-  "runtime": {
-    "platform": "iOS26.5 QA simulator",
-    "region": "dev",
-    "sourceLabel": "feat-mobile-group-invites@69af80da8 · v0.1.0 (2026072301)",
-    "identity": "healthy, native-matched, 8084 target-fresh",
-    "preview": "real QA avatar collection / 3 members / already joined",
-    "themes": [
-      "Light",
-      "Dark"
-    ],
-    "privacy": "inviter display caption changed in memory only for screenshot; restored"
+  "version": 1,
+  "sourceHead": "9623d2a7a5369f8665c4e782b8bd4e84341813a5",
+  "mergedMain": "1dbff37a891f3d4c660f326084876e09598d80bf",
+  "scope": {
+    "fileCount": 36,
+    "invitationPatchIdenticalTo": "69af80da8492774d4facb1fac4874210f9582613",
+    "manualConflict": "HomeTeammatesSection.test.tsx; preserve invitation rows and upstream avatar default"
   },
-  "historicalEvidence": "51eca5b044 Home/navigation and 43579ceb first join/full local gate retained separately; not current-head full CI",
-  "unverified": [
-    "current-head fresh first join",
+  "native": {
+    "fingerprint": "574cfd3a9e369a2652988e1a82be132e8472e943",
+    "matchesCurrentWorktree": true,
+    "reusedInstalledApp": true
+  },
+  "automated": {
+    "mobileTests": 209,
+    "desktopTests": 50,
+    "totalFiles": 12,
+    "mobileTypecheckSeconds": 26.7,
+    "desktopTypecheckSeconds": 165.43,
+    "guardsPassed": true,
+    "localFullSuiteRerun": false
+  },
+  "runtime": {
+    "platform": "iOS 26.5 / iPhone 17 Pro",
+    "sourceLabel": "feat-mobile-group-invites@9623d2a7a",
+    "realDevPreview": true,
+    "group": "Invite QA 1029",
+    "memberCount": 3,
+    "alreadyJoined": true,
+    "groupAvatarCollection": true,
+    "fullAppScreenshots": {
+      "light": true,
+      "dark": true,
+      "width": 804,
+      "height": 1748
+    },
+    "cancelClosed": true,
+    "returnedHome": true,
+    "temporaryInviterCaption": "QA User; memory only, restored after screenshots"
+  },
+  "historicalEvidence": {
+    "firstJoin": "43579ceb: 2 to 3 members; unique member and join event",
+    "homeAndNavigation": "51eca5b044: no-computer join entry, manual/external interaction, Open Group, return Home",
+    "repeatedThisHead": false
+  },
+  "notVerified": [
     "Android native UI",
-    "physical device",
-    "production"
+    "physical devices",
+    "production accounts",
+    "WeChat handoff and install flow",
+    "fresh first join on this head"
   ],
-  "remoteCIAndReview": "pending at capture"
+  "review": {
+    "provider": "greptile",
+    "requestUrl": "https://github.com/makecindy/cindy/pull/7930#issuecomment-6514050747",
+    "currentHeadScoreVerified": false,
+    "oldHeadScoreNotReused": true
+  }
 }

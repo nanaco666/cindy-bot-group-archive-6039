@@ -1,45 +1,45 @@
-# PR #8714 确认版本验收
+# #8714 验收报告
 
-- 日期：2026-11-04；代码：`2f5c7d33223d7380edd36f760801d805ab73aa30`。
-- 范围：Desktop 伙伴与群列表、电脑未读提示；#8715 话题/胶囊改色暂停，#8716 不改。
-- 本次截图在提交前同内容工作区采集；提交后工作区干净，生产文件内容与提交一致。
+源码：`c520170db82006df33402750489503b8cb02a01a`。2026-11-04。合入 main `7ac6b1979ea6a4a73b59b13065c7ccc7d9167b28`，仅 DESIGN.md 有冲突；保留 main 的手机规范迁移与委派状态登记，以及本 PR 的桌面列表规则。
 
-## 最终显示
+## 最终行为
 
-| 状态 | 展开 | 收起 |
+| 场景 | 展开 | 收起 |
 | --- | --- | --- |
-| Bot 私聊未读 | 绿点，保留时间 | 绿点 |
-| 群普通未读 | 复用 NavigationCountBadge 灰色数字（99+）并保留时间 | 不显示普通未读点 |
-| 群显式提及本人 | 蓝点，保留时间 | 蓝点 |
-| 进行中 | 原处理摘要，不重复显示橙点；时间保留 | 橙色呼吸点 |
-| 待处理 / 报错 | 青 / 红点，保留时间 | 青 / 红点 |
+| Bot 私聊完成未读／普通未读 | 绿点，无数字 | 绿点 |
+| 群完成未读、未提及本人 | 仅绿点 | 绿点 |
+| 群普通未读、无完成记录 | 灰数 | 蓝点 |
+| 群未读提及本人，无更高优先状态 | 蓝色数字（群未读总数） | 蓝点 |
+| 正在工作 | Bot 与群统一橙色进度、呼吸星星；群有未读时同时显示灰数，包括提及本人 | 橙色呼吸点 |
+| 待处理／报错 | 青点／红点，无数字 | 青点／红点 |
+| 读完且无工作需关注 | 无提示 | 无提示 |
 
-头像尺寸、状态点尺寸与位置、圆形选中描边沿用已确认版本。群蓝点与执行状态重叠时，本版本保留既有执行优先判据；不将其描述为老板原文中的新要求。未带显式提及的 Bot 回复本人尚无独立摘要判据，本 PR 没有补做消息关系识别。
+青→红→进行中→完成未读→普通未读的顺序沿用共享规则。+N 汇总隐藏条目的状态。时间保留，状态与摘要居中对齐；36px 收起头像、40px 点击区、4px 间距、1px 圆形外描边与 2px 留空。电脑菜单与近况保持 main 原有蓝色规则。
 
-## 清理与回归
+## 验证
 
-- 清理收起条目中未消费的 unread 返回字段和过时注释；移除旧的“隐藏时间”断言，改为保留时间。保留撑住原行布局的占位节点，未借清理调整头像或行距。
-- 补齐列表设计文档索引，更新 DESIGN.md 与专题规范，统一灰色数字、蓝点及时间说明。
-- 选中远程 Cindy、generation 缺失但运行快照仍在时，旧代码无法显示处理摘要。最小回归先失败后通过；停止后恢复消息摘要。独立远程行、其他电脑运行仍覆盖。
-- 对最新 origin/main 执行 merge-tree：无冲突；没有无必要地合并主干。
+- 合并 main 后：4 个相关单测文件 119/119，通过；Desktop typecheck、check:dev-docs、DCO、相对 main 的 diff --check 通过。
+- 合并前：ui:check --changed --theme all，138/138 变体通过，没有已改 renderer 文件未覆盖。
+- 合并后：message-kinds、completed-group-unread、collapsed-mention 的 Light/Dark 共 6/6 变体通过；另用真实 Electron 录制展开／收起进行中，检查呼吸动画已启用。目检本图册的关键状态和 GIF 帧。
+- 本图册由合并后、提交前的工作树生成，提交后核对源码未再变化，内容对应上述提交。完整自动截图和原始帧仅留本地，不公开。
 
-## 验证结果
+### 测试价值与单文件墙钟耗时
 
-| 命令 / 方法 | 结果 |
-| --- | --- |
-| `pnpm --filter desktop exec vitest run`（teammatesSection / botGroupSidebar / CindyDevicePicker / teammatesSectionSpacing / botListDisplay / BotGlancePopover，2 workers） | 6 文件，136 项通过，5.83 秒 |
-| `pnpm --filter desktop run typecheck` | 通过 |
-| `pnpm ui:check --page teammates-section --case all --theme all --engine electron` | 40/40 通过，38.6 秒 |
-| `pnpm ui:check --changed --theme all --engine electron` | 134/134 通过，127.3 秒；device-picker / group-chat / teammate-glance / teammates-section |
-| `pnpm check:dev-docs` / `pnpm check:design-colors --base-ref origin/main --worktree` / `git diff --check` | 通过 |
-| `pnpm check:dco` | 4 个提交签名通过 |
-| 完整 Cindy 开发版 | 来源与隔离预览 worktree 匹配，运行中组件已加载 remoteRunning 修复；没有抓取真实桌面 |
+| 文件 | 真实入口与最小输入／回归目标 | 实测耗时 |
+| --- | --- | --- |
+| botGroupSidebar.test.tsx（43 条） | 群列表；普通未读、完成、提及与运行状态重叠，验证灰数／蓝数／绿点、收起及 +N、读位清除 | 5.24s |
+| teammatesSection.test.tsx（53 条） | 伙伴列表；本机／远程／多电脑运行快照，验证进度不丢、呼吸一致、青红优先级及未读清除 | 7.05s |
+| CindyDevicePicker.test.tsx（13 条） | 真实设备选择；未读／离线选项，保留菜单原蓝色数字及选择语义，列表用绿点 | 3.16s |
+| teammatesSectionSpacing.test.ts（10 条） | 既有几何守卫；状态进入摘要行、保留时间列和点击区。实际尺寸与视觉由 Electron 补充验证 | 0.88s |
 
-已目检主列表 Light/Dark 与概览，时间、灰色未读数、绿/蓝/红点显示正确。完整模拟场景原图见 [图册](GALLERY.md)，离线单文件见 [HTML 图册](gallery.html)。单页夹具不证明服务端读位、真实 Agent 提问或跨设备传输正确。
+上述文件逐个以 `pnpm --filter desktop exec vitest run <文件> --maxWorkers=1` 测量；不修改状态数据来源、持久化或跨设备协议。
 
-## 验证边界
+## 边界与风险
 
-- Windows 未实机目检；新 head 的全量 CI 另行运行。
-- 前一 head `ec3bd8a7d1` 的 Windows shard 1 在未修改的 `VisionBridgeSectionRendering.test.tsx` 用例失败（预期保存调用但调用数为 0）；该设置模块不在本 PR diff。这里只记录，不能据此声称 Windows 全绿，也没有顺带修改设置模块。
-- 本轮按影响面验证，没有重复整仓单测。首次全量命令曾因 Desktop 线程池 SIGSEGV 返回 1；相同范围以 2 个 fork worker 复跑通过 3,831 文件 / 65,852 测试。历史记录见原验收报告，不把复跑写成原命令全绿。
-- 群内 thread/@ 胶囊继续沿用 main 蓝色；本 PR 不包含 #8715 改色，独立话题分支保留 Draft。
+- 场景数据不代替真实 Agent、消息收发、服务器读位与跨电脑链路验收。Windows 未实机目检；本轮未重做完整 Electron 账号链路。
+- serverUnread.mentioned 仅表示显式提及本人；不能将全部 Bot 发言视为“回复本人”。远程待回答传播问题另查。
+- 本地全量门禁未执行，等待 PR CI。历史一次全量命令因 Desktop 线程池 SIGSEGV 失败，后续受限 worker 重跑记录不冒充当前提交的全量通过。
+- 旧 head 的 Windows 视觉模型设置测试曾失败；当前 head 的 CI 独立判断，不扩修无关模块。
+- 回滚本 PR 可恢复原 UI，无数据迁移。#8715 继续暂停，#8716 已合入 main，不额外修改。
+
+[精选图册](GALLERY.md)

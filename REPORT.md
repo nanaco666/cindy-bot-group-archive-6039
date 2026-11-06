@@ -1,5 +1,29 @@
 # 移动端话题附件交付报告
 
+## 话题工具栏窄屏复核
+
+2026-11-06 修复提交 `f3bda6622871b4d058aff1ef868e13d479cabd27`，对应 PR #9121 的 [P2 评论](https://github.com/makecindy/cindy/pull/9121#discussion_r4490213606)。本节更新初次报告中的窄屏/大字号未验收项；真网、Android 等边界仍保留。
+
+核对基线与 PR：原话题工具栏只放复选项，本 PR 在同一左侧区域增加 34pt 加号及间距。左侧父容器允许收缩，但复选项与文字没有收缩约束，新增按钮进一步挤占文字空间。已在真实 iOS 组件、320pt 容器、现有 pt-PT 文案下复现修复前的文字伸到发送按钮下方；这是本 PR 入口变化必须一并处理的布局缺口。
+
+只改 `BotGroupComposer.tsx` 两行样式：复选项增加 `flexShrink: 1` / `minWidth: 0`，文字增加 `flexShrink: 1`；默认完整换行，不截断文案、不调整按钮大小、不改公共组件。
+
+| 修复前：320pt / pt-PT | 修复后：同宽同语言 |
+| --- | --- |
+| ![修复前重叠](width-before-320.jpg) | ![修复后完整换行](width-after-320-light.jpg) |
+
+[深色 / 系统最大辅助字号截图](width-after-320-dark-large.jpg)。系统字号为 accessibility-extra-extra-extra-large，AppText 沿用产品既有 1.2 倍上限。截图是在 402pt iPhone 模拟器中将真实组件容器约束为 320pt，不冒充 320pt 物理设备。
+
+原生无障碍坐标：复选项 x=109、width=178，发送按钮 x=299、width=34，中间留 12pt；加号 x=69、width=34。字号放大后仍不重叠。复选项与加号分别点击正常，加号可打开附件面板。没有新增源码字面量测试，红/绿回归由真实原生渲染截图验证。
+
+验证：Screen 198 项 + 4 个设计规则文件 37 项，共 235 项通过（8.38s）；mobile typecheck、scope、diff 检查、DCO 通过。颜色扫描 unexpected=0，保留对已有 Desktop 行的报告。仅两行布局改动，复用此前发送/上传验证，不重复整仓。本地全量门禁未执行，等待 PR CI。
+
+仍用本任务原有模拟器与 Metro 8082；whoami healthy=true / currentSourceOnExpectedPort=true / native-matched，源码标记 `cindy/zealous-curie@ee4f732bc+49845d0254`。sim:up 的前台探测曾报 APP_NOT_FOREGROUND，已用插件显式启动和截图验证页面；没有把探测失败当通过。原生缓存指纹未变，无新增原生构建。临时路由已移除，系统字号/主题已恢复，设备与本任务 Metro 已关闭。
+
+下方为首次交付记录，历史验证时的未覆盖项以本节补充为准。
+
+---
+
 2026-11-06；实现提交 `ee4f732bc72668eb575996cf05e1301ee431c2ab`，分支 `cindy/zealous-curie`。
 基于开发开始时 canonical main `9d62b213c960c63daa46996de8a606965f2f2299`。
 

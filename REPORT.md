@@ -1,3 +1,24 @@
+# 话题收起态附件徽标复核 · 2026-11-08
+
+修复提交：`e9f247a24209bba67acfc282f7b24541244f518c`，对应 [评审意见](https://github.com/makecindy/cindy/pull/9121#discussion_r4506340608)。
+
+本 PR 开放话题附件后，旧的 `leading={topic ? undefined : leading}` 会在输入框收起时隐藏附件徽标，但附件仍能随消息发送。本轮仅让有附件的话题复用既有 `ComposerAttachmentCollapsedBadge`，空话题仍维持原收起样式；生产改动一行。
+
+- 回归先红后绿：话题 pending/failed 两例修改前失败、主群通过；修复后 `BotGroupChatScreen.test.tsx` 211 项通过（6.11s），其余7文件131项通过（2.88s），共342项。验证徽标数量、点击聚焦、重新展开、失败保留及成功清空。
+- mobile typecheck、scope、test-hygiene、design-colors、DCO、diff检查通过。本地全量门禁未执行，等待 PR CI。
+- 真实 iOS 模拟器组件 fixture，320pt 宽：选最近照片→收起后缩略图仍可见→点徽标展开同一附件托盘与键盘；深色收起态也可见；从收起态发送后合成回调收到图片且徽标清空。
+- 原生包通过仓库 `mobile:sim:up -- --mock` 流程新构建/安装（main 已升级 RN0.88.1，旧缓存不兼容）。v0.1.0 / build2026072301，native fingerprint `850f6327bf3e424a490ba9a715b665291fbdf349`；whoami healthy=true、native-matched、source/expectedSource一致，启动最终 READY/bundleVerified/foreground=true；logcheck通过，无新增WARN。
+- 首次启动前台探测失败，临时 fixture 在构建期间修正类型后 Metro 身份过期；通过仓库流程刷新本任务 Metro 后复核通过。临时预览路由已删除，设备已关机、本任务 Metro 已停止。
+- **边界**：上传/发送回执为合成数据，不代表真实服务器端到端发送；Android、真机和完整群聊页面此次未重跑。未改协议、原生依赖、bridge.test.ts，也未申请Greptile或人审。下方早期报告保留历史证据，旧CI/评分不能覆盖新head。
+
+| 浅色收起 | 深色收起 |
+| --- | --- |
+| ![浅色可见附件徽标](badge-collapsed-light.jpg) | ![深色可见附件徽标](badge-collapsed-dark.jpg) |
+
+[点徽标后展开附件托盘](badge-expanded-light.jpg) · [合成发送成功后清空徽标](badge-sent-dark.jpg)
+
+---
+
 # 移动端话题附件交付报告
 
 ## 话题工具栏窄屏复核

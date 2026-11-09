@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "e014d8ea42c8faa2c790ac5a4152083bc834a177",
+  "cleanWorktree": true,
+  "run": "artifacts/ui-check/group-chat-vYWeEL",
+  "viewport": "720x800",
+  "scenario": "process-history",
+  "files": {
+    "dark-collapsed.png": "de5ad5e5863d0c9fbe312ec0a2113e8bd5eb5fa23222ab9e58cdcf34d45225c2",
+    "dark-expanded.png": "e64162e6dde743fc09e3f6c23a337fc90703cd34fa2a632b1f246baa7639c375",
+    "light-collapsed.png": "9032ec60c2489df2240601fa7efef7d6afced4e313fe16042da526162a8a4f02",
+    "light-expanded.png": "f8e0ab54710964bf4bcb7d9229800f76dddddafc967af28eda38f7970366ec3f"
+  },
+  "coverage": "Real production renderer components and theme; isolated group scene data. Not account/native end-to-end acceptance."
+}

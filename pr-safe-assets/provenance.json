@@ -1,0 +1,16 @@
+{
+  "sourceHead": "1818ae0fd78438418faa518dc2973f85624537df",
+  "desktop": "real component fixture; production renderer unchanged since capture; historical summary retained",
+  "mobile": "real native current integration6dd264668; system iPhone17Pro/iOS26.5; QA-only names; no authentication/private task previews",
+  "publicImages": [
+    "desktop-own-light.png",
+    "desktop-own-dark.png",
+    "ios-active-light.png",
+    "ios-active-dark.png"
+  ],
+  "localOnly": [
+    "all real Desktop sidebar captures",
+    "native home/build-label containing private task previews"
+  ],
+  "status": "prepared locally, not pushed"
+}
